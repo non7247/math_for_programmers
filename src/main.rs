@@ -1,3 +1,5 @@
+use std::f64::consts::PI;
+
 fn add(vectors: &[(f64, f64)]) -> (f64, f64) {
     vectors
         .iter()
@@ -23,6 +25,11 @@ fn perimeter(vectors: &[(f64, f64)]) -> f64 {
         .map(|(v1, v2)| distance(v1, v2))
         .sum();
     result + distance(&vectors[0], &vectors[vectors.len() - 1])
+}
+
+fn to_cartesian(polar_vector: &(f64, f64)) -> (f64, f64) {
+    let (length, angle) = polar_vector;
+    (length * angle.cos(), length * angle.sin())
 }
 
 fn main() {
@@ -53,4 +60,8 @@ fn main() {
             }
         }
     }
+
+    let angle = 37.0 * PI / 180.0;
+    let result = to_cartesian(&(5.0, angle));
+    println!("({}, {})", result.0, result.1);
 }
