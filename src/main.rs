@@ -32,6 +32,12 @@ fn to_cartesian(polar_vector: &(f64, f64)) -> (f64, f64) {
     (length * angle.cos(), length * angle.sin())
 }
 
+fn to_polar(vector: &(f64, f64)) -> (f64, f64) {
+    let (x, y) = vector;
+    let angle = y.atan2(*x);
+    (length(&vector), angle)
+}
+
 fn main() {
     let vectors = vec![(1.0, 2.0), (2.0, 4.0), (3.0, 6.0), (4.0, 8.0)];
     let result = add(&vectors);
@@ -64,4 +70,9 @@ fn main() {
     let angle = 37.0 * PI / 180.0;
     let result = to_cartesian(&(5.0, angle));
     println!("({}, {})", result.0, result.1);
+
+    let polar = to_polar(&(1.0, 0.0));
+    println!("({}, {})", polar.0, polar.1);
+    let polar = to_polar(&(-2.0, 3.0));
+    println!("({}, {})", polar.0, polar.1);
 }
