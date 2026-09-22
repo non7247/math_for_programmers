@@ -56,6 +56,14 @@ fn rotate(angle: f64, vectors: &[(f64, f64)]) -> Vec::<(f64, f64)> {
         .collect()
 }
 
+fn dot3d(u: &(f64, f64, f64), v: &(f64, f64, f64)) -> f64 {
+    u.0 * v.0 + u.1 * v.1 + u.2 * v.2
+}
+
+fn angle_between3d(v1: &(f64, f64, f64), v2: &(f64, f64, f64)) -> f64 {
+    (dot3d(v1, v2) / (length3d(v1) * length3d(v2))).acos()
+}
+
 fn main() {
     let vectors = vec![(1.0, 2.0), (2.0, 4.0), (3.0, 6.0), (4.0, 8.0)];
     let result = add(&vectors);
