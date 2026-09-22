@@ -6,6 +6,12 @@ fn add(vectors: &[(f64, f64)]) -> (f64, f64) {
         .fold((0.0, 0.0), |acc, &(x, y)| (acc.0 + x, acc.1 + y))
 }
 
+fn add3d(vectors: &[(f64, f64, f64)]) -> (f64, f64, f64) {
+    vectors
+        .iter()
+        .fold((0.0, 0.0, 0.0), |acc, &(x, y, z)| (acc.0 + x, acc.1 + y, acc.2 + z))
+}
+
 fn length(v: &(f64, f64)) -> f64 {
     (v.0 * v.0 + v.1 * v.1).sqrt()
 }
