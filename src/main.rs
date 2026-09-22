@@ -38,6 +38,17 @@ fn to_polar(vector: &(f64, f64)) -> (f64, f64) {
     (length(&vector), angle)
 }
 
+fn rotate(angle: f64, vectors: &[(f64, f64)]) -> Vec::<(f64, f64)> {
+    let polars: Vec<_> = vectors
+        .iter()
+        .map(|v| to_polar(v))
+        .collect();
+    polars
+        .iter()
+        .map(|v| to_cartesian(&(v.0, v.1 + angle)))
+        .collect()
+}
+
 fn main() {
     let vectors = vec![(1.0, 2.0), (2.0, 4.0), (3.0, 6.0), (4.0, 8.0)];
     let result = add(&vectors);
