@@ -39,12 +39,9 @@ fn to_polar(vector: &(f64, f64)) -> (f64, f64) {
 }
 
 fn rotate(angle: f64, vectors: &[(f64, f64)]) -> Vec::<(f64, f64)> {
-    let polars: Vec<_> = vectors
+    vectors
         .iter()
         .map(|v| to_polar(v))
-        .collect();
-    polars
-        .iter()
         .map(|v| to_cartesian(&(v.0, v.1 + angle)))
         .collect()
 }
