@@ -16,6 +16,10 @@ fn length(v: &(f64, f64)) -> f64 {
     (v.0 * v.0 + v.1 * v.1).sqrt()
 }
 
+fn length3d(v: &(f64, f64, f64)) -> f64 {
+    (v.0 * v.0 + v.1 * v.1 + v.2 * v.2).sqrt()
+}
+
 fn subtract(v1: &(f64, f64), v2: &(f64, f64)) -> (f64, f64) {
     (v1.0 - v2.0, v1.1 - v2.1)
 }
@@ -89,4 +93,6 @@ fn main() {
     println!("({}, {})", polar.0, polar.1);
     let polar = to_polar(&(-2.0, 3.0));
     println!("({}, {})", polar.0, polar.1);
+
+    println!("{}", length3d(&(3.0, 4.0, 12.0)));
 }
