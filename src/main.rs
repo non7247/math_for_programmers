@@ -64,6 +64,12 @@ fn angle_between3d(v1: &(f64, f64, f64), v2: &(f64, f64, f64)) -> f64 {
     (dot3d(v1, v2) / (length3d(v1) * length3d(v2))).acos()
 }
 
+fn cross3d(u: &(f64, f64, f64), v: &(f64, f64, f64)) -> (f64, f64, f64) {
+    let (ux, uy, uz) = u;
+    let (vx, vy, vz) = v;
+    (uy * vz - uz * vy, uz * vx - ux * vz, ux * vy - uy * vx)
+}
+
 fn main() {
     let vectors = vec![(1.0, 2.0), (2.0, 4.0), (3.0, 6.0), (4.0, 8.0)];
     let result = add(&vectors);
@@ -103,4 +109,8 @@ fn main() {
     println!("({}, {})", polar.0, polar.1);
 
     println!("{}", length3d(&(3.0, 4.0, 12.0)));
+
+    println!("{:?}", cross3d(&(0.0, 0.0, 1.0), &(1.0, 2.0, 3.0)));
+    println!("{:?}", cross3d(&(0.0, 0.0, 1.0), &(-1.0, -1.0, 0.0)));
+    println!("{:?}", cross3d(&(0.0, 0.0, 1.0), &(1.0, -1.0, 5.0)));
 }
